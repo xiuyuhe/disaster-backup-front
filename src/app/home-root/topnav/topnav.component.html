@@ -1,0 +1,67 @@
+
+
+<header class="header">
+  <div class="header-block header-block-collapse hidden-lg-up" >
+    <button class="collapse-btn btn btn-info" id="sidebar-collapse-btn">
+      <i class="fa fa-bars"></i>
+    </button>
+  </div>
+
+  <!--<form class="search-form form-inline pull-xs-left hidden-sm-down">-->
+  <!--<div class="input-group">-->
+  <!--<input type="text" class="form-control" placeholder="Search for...">-->
+  <!--<span class="input-group-btn"><button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button></span>-->
+  <!--</div>-->
+  <!--</form>-->
+
+  <div class="header-block header-block-nav">
+    <ul class="nav-profile">
+
+      <li class="dropdown nav-item" ngbDropdown>
+        <!-- <div class="dropdown"> -->
+        <a href="javascript:;" id="name2" class="nav-link dropdown-toggle" ngbDropdownToggle>
+          <i class="fa fa-bell"></i>
+        </a>
+        <ul class="dropdown-menu alert-dropdown" aria-labelledby="name2">
+          <li>
+            <a href="javascript:;" class="dropdown-item">Alert Name</a>
+          </li>
+          <li>
+            <a href="javascript:;" class="dropdown-item">Alert Name</a>
+          </li>
+          <li class="dropdown-divider"></li>
+          <li>
+            <a href="javascript:;" class="dropdown-item">View All</a>
+          </li>
+        </ul>
+        <!-- </div> -->
+      </li>
+
+
+      <li class="profile dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user"></i>
+          <span class="name">username</span>
+        </a>
+        <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
+          <a class="dropdown-item" href="javascript:void(0);">
+            <i class="fa fa-user icon"></i>
+            个人信息
+          </a>
+          <div class="dropdown-divider" ></div>
+          <a class="dropdown-item" (click)="logout()">
+            <i class="fa fa-power-off icon"></i>
+            注销
+          </a>
+        </div>
+      </li>
+
+      <li class="dropdown nav-item" ngbDropdown>
+        <a href="javascript:;" class="nav-link dropdown-toggle" ngbDropdownToggle>
+          <i class="fa fa-map-marker" aria-hidden="true"></i> name <b class="caret"></b>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</header>

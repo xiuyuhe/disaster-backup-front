@@ -1,0 +1,109 @@
+@import "variables";
+@import "bootstrap/scss/bootstrap";
+@import "scss/commons";
+@import "scss/mixins";
+@import "scss/header";
+@import "scss/sidebar";
+
+.app {
+  position: relative;
+  width: 100%;
+  padding-left: $sidebar-width;
+  min-height: 100vh;
+  margin: 0 auto;
+  left: 0;
+  background-color: $color-bg;
+  box-shadow: 0 0 3px #ccc;
+  transition: left 0.3s ease, padding-left 0.3s ease;
+  overflow: hidden;
+
+  .content {
+    $padding-x: $content-padding-x-md;
+    $padding-y: $content-padding-y-md;
+
+    padding: $header-height + $padding-y $padding-x $footer-height + $padding-y $padding-x;
+    min-height: 100vh;
+    background-color: #957c57;
+
+    @include media(xl) {
+      $padding-x: $content-padding-x-xl;
+      $padding-y: $content-padding-y-xl;
+
+      padding: $header-height + $padding-y $padding-x $footer-height + $padding-y $padding-x;
+    }
+
+    @include media(lg) {
+      $padding-x: $content-padding-x-lg;
+      $padding-y: $content-padding-y-lg;
+
+      padding: $header-height + $padding-y $padding-x $footer-height + $padding-y $padding-x;
+    }
+
+    @include media(md) {
+      $padding-x: $content-padding-x-md;
+      $padding-y: $content-padding-y-md;
+
+      padding: $header-height + $padding-y $padding-x $footer-height + $padding-y $padding-x;
+    }
+
+    @include media-down(sm) {
+      $padding-x: $content-padding-x-sm;
+      $padding-y: $content-padding-y-sm;
+
+      padding: $header-height-xs + $padding-y $padding-x $footer-height + $padding-y $padding-x;
+    }
+  }
+
+
+  .dl-horizontal {
+
+    font-size: 13px;
+
+    dt {
+      width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      float: left;
+      &:after {
+        clear: both;
+        content: ' ';
+      }
+    }
+
+    &:after {
+      clear: both;
+      content: ' ';
+    }
+  }
+
+  .mt-10{
+    margin-top: 10px;
+  }
+
+  .bottom-line{
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 10px;
+  }
+  @include media-down(md) {
+    padding-left: 0;
+    // background-color: #ccc;
+    // left: -$sidebar-width;
+    // width: calc(100% + #{$sidebar-width});
+  }
+
+  &.sidebar-open {
+    // Disable content scrolling when sidebar is open
+    @include media-down(md) {
+      left: 0;
+      // position: absolute;
+      // height: 100%;
+      // overflow: hidden;
+    }
+  }
+
+  &.blank {
+    background-color: #667380;
+  }
+
+}
