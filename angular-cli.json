@@ -19,9 +19,15 @@
       "mobile": false,
       "styles": [
         "styles.css",
-        "./assets/app.scss"
+        "./assets/app.scss",
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/metismenu/dist/metisMenu.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/metismenu/dist/metisMenu.js",
+        "./assets/js/sidebar.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",

@@ -1,102 +1,276 @@
-#sidebar {
+.sidebar {
+  background-color: $sidebar-color-primary;
   width: $sidebar-width;
-  margin-left : -$sidebar-width;
-  position: fixed;
+  padding-bottom: 60px;
+  position: absolute;
   top: 0;
+  left: 0;
   bottom: 0;
-  color: #FFF;
-  background: $brand-primary;
-  a {
-    cursor: pointer;
+  transition: left 0.3s ease;
+  z-index: 20;
+
+
+  @include media-down(md) {
+    position: fixed;
+    left: -$sidebar-width;
   }
-  .sidenav-outer {
+
+  .sidebar-fixed & {
+    position: fixed;
+  }
+
+  .sidebar-open & {
+    left: 0;
+
+  }
+
+  .sidebar-container {
     position: absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right: 0;
-    overflow: hidden;
-    .menu-body {
-      border-top: 1px solid rgba(255,255,255,.2);
-      .nav {
-        li {
-          border-bottom: 1px solid rgba(255,255,255,.2);
-          border-left: 3px solid transparent;
-          list-style-type: none;
-          .website-name {
-            padding: 15px;
-            display: block;
-            text-align: center;
+    top: 0;
+    bottom: 51px;
+    width: 100%;
+    left: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar-track {
+      background-color: darken($sidebar-color-primary, 6.5%);
+    }
+  }
+
+  .nav {
+
+    font-size: 16px;
+
+    // Common styles
+    li {
+      a:focus,
+      .open & a:focus {
+        background-color: inherit;
+      }
+    }
+
+    // Second + menu items
+    ul {
+      padding: 0;
+      height: auto;
+      overflow: hidden;
+
+      .loaded & {
+        height: auto;
+      }
+    }
+
+    li.active ul {
+      height: auto;
+    }
+
+
+    // All links which are not active
+    // have subdued color
+    li a {
+      color: $sidebar-color-text;
+      text-decoration: none;
+    }
+
+    // All links which are not active
+    // On hover bg become darker
+    // Their color become lighter
+    li a:hover,
+    li.open > a,
+    li.open a:hover {
+      color: $sidebar-color-text-active;
+      background-color: $sidebar-color-secondary;
+    }
+
+
+    // First level items
+    &> li {
+
+      // First level items links
+      & > a {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 20px;
+        padding-right: 10px;
+      }
+
+      // First level active links have primary background
+      &.active > a,
+      &.active > a:hover {
+        background-color: $color-primary !important;
+        color: $color-text-inverse !important;
+      }
+
+      // First level active links have bit darker background
+      &.open > a {
+        background-color: darken($sidebar-color-primary, 3%);
+      }
+
+      // Open items links
+      &.open > a {
+        i.arrow {
+          transform: rotate(90deg);
+        }
+      }
+
+      // First level item links arrow
+      & > a {
+        i {
+          margin-right: 5px;
+          font-size: 16px;
+
+          &.arrow {
+            float: right;
             font-size: 20px;
-            color: rgba(255,255,255,0.6);
-          }
-          .logo {
-            padding: 15px;
-            display: block;
-            text-align: center;
-            margin-left: -5px;
-            p {
-              margin-top: 15px;
-              margin-bottom: 5px;
+            line-height: initial;
+            transition: all 0.3s ease;
+
+            &:before {
+              content: "\f105" !important;
             }
-          }
-          a {
-            transition: all .2s ease-in-out;
-            display: block;
-            color: #FFF;
-            &:focus {
-              text-decoration: none;
-            }
-            i {
-              display: inline-block;
-              width: 50px;
-              text-align: center;
-              font-size: 20px;
-              transition: all .3s ease;
-              line-height: 50px;
-              vertical-align: middle;
-            }
-          }
-          & .submenu {
-            height: 0;
-            display: none;
-            transition: height .5s ease;
-          }
-          &.expand {
-            ul.submenu {
-              height: auto !important;
-              display: block !important;
-              margin-left: 9px;
-              li {
-                border-bottom: none;
-                padding: 5px 15px 15px;
-                a {
-                  display: block;
-                }
-              }
-            }
-          }
-          &:first-child {
-            border-bottom: none;
           }
         }
       }
+
+    }
+
+    // Second level items
+    & > li > ul > li {
+
+      // Second level and deeper items links
+      // Have bit darker background and more padding
+      // from left side
+      a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 50px;
+        background-color: darken($sidebar-color-primary, 3%);
+      }
+
+      // Second level active items links
+      // Have brighter color
+      &.active a {
+        color: $sidebar-color-text-active;
+        background-color: darken($sidebar-color-primary, 5%);
+      }
+    }
+  }
+
+}
+
+.sidebar-overlay {
+  position: absolute;
+  display: none;
+  left: 200vw;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 15;
+
+  @include media-down(md) {
+    display: block;
+  }
+
+  @include media-down(sm) {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+
+  .sidebar-open & {
+    @include media-down(md) {
+      left: 0;
+      opacity: 1;
     }
   }
 }
 
-@media screen and (max-width: 768px) {
-  #sidebar {
-    left : -$sidebar-width;
-  }
-  .main-container {
-    margin-left: 0 !important;
+//sidebar header
+.sidebar-header {
+  .brand {
+    color: #fff;
+    text-align: left;
+    padding-left: 25px;
+    line-height: $header-height;
+    font-size: 15px;
+    background: darken($brand-primary, 5%);
+
+    @include media-down(sm) {
+      line-height: $header-height-xs;
+      font-size: 16px;
+    }
   }
 }
-.sidebar-left-zero {
-  left : 0 !important;
+
+//sidebar nav
+.header .header-block-nav {
+  margin-left: auto;
+  white-space: nowrap;
+  padding-right: 15px;
+
+  @include media-down(sm) {
+    padding-right: 25px;
+  }
+
+  @include clearfix();
+
+  a {
+    text-decoration: none;
+  }
+
+  // All lists
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  & > ul {
+    display: table;
+  }
+
+  // First level items
+  & > ul > li {
+    display: table-cell;
+    position: relative;
+
+    &:before {
+      display: block;
+      content: " ";
+      width: 1px;
+      height: 24px;
+      top: 50%;
+      margin-top: -12px;
+      background-color: darken($color-divider, 25%);
+      position: absolute;
+      left: 0;
+    }
+
+    &:first-child:before {
+      display: none;
+    }
+  }
+
+  // First leve items links
+  & > ul > li > a {
+    padding: 0 15px;
+    color: $color-text;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  // Dropdown menus
+  .dropdown-menu {
+    margin-top: 15px;
+  }
+
 }
-.main-container-ml-zero {
-  margin-left: 235px !important;
-  margin-right: -235px !important;
+
+[class^='nav'] li > a, [class*=' nav'] li > a {
+  display: block;
 }
