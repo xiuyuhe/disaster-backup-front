@@ -1,0 +1,96 @@
+<section class="content" style="padding: 0px">
+	<h3 style="display:inline;margin-left:1%;">
+         签到人员列表---<small>签到信息管理</small>
+  </h3>
+  <form class="form-inline" style="margin:10px;padding: 10px; border: 2px solid grey; ">
+  <div class="form-group">
+    <label for="exampleInputName2" >姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</label>
+    <input type="text" class="form-control" id="exampleInputName2" placeholder="请输入姓名">
+  </div>
+  <div class="form-group">
+      <label for="exampleInputEmail2">所属站点:</label>
+      <select class="select">
+          <option value ="volvo">Volvo</option>
+          <option value ="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+       </select>
+    </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务:</label>
+    <select class="select">
+        <option value ="volvo">Volvo</option>
+        <option value ="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+     </select>
+  </div>
+   <button type="submit" class="btn btn-outline-primary">查询</button>
+</form>
+<hr>
+<table class="table table-hover">
+  <tr>
+  <th>
+    <input type="checkbox">
+  </th>
+  <th>人员编码</th>
+  <th>姓名</th>
+  <th>手机号</th>
+  <th>职务</th>
+  <th>所属站点编码</th>
+  <th>所属站点</th>
+  <th>操作</th>
+  </tr>
+  <tr>
+  <th>
+    <input type="checkbox">
+  </th>
+  <td>1</td>
+  <td>1</td>
+  <td>1</td>
+  <td>1</td>
+  <td>1</td>
+  <td>1</td>
+  <td>1</td></tr>
+  <tr>
+  <th>
+    <input type="checkbox">
+  </th>
+  <td>2</td>
+  <td>2</td>
+  <td>2</td>
+  <td>2</td>
+  <td>2</td>
+  <td>2</td>
+  <td>2</td></tr>
+</table>
+<div class="center">
+  <button  type="button" class="btn btn-info">批量导入</button>
+  <button  type="button" class="btn btn-info">批量导出</button>
+  <!-- Button trigger modal -->
+<button class="btn btn-primary" (click)="lgModal.show()">Large modal</button>
+ 
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Large modal</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+  <button  type="button" class="btn btn-info">删除人员</button>
+</div>
+<div class="center">
+  <a href="#" >上一页</a>
+  <a href="#" >下一页</a>
+  <a href="#" >首页</a>
+  <a href="#" >末页</a>
+</div>
+</section> 

@@ -9,7 +9,12 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     RouterModule
   ],
-  declarations: [SidebarComponent, TopnavComponent],
-  exports: [SidebarComponent, TopnavComponent]
+  declarations: [
+  SidebarComponent, 
+  TopnavComponent,
+],
+  exports: [SidebarComponent, 
+  TopnavComponent
+  ]
 })
 export class HomeRootModule { }

@@ -10,22 +10,29 @@ import { LoginComponent } from './login/login.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { HomeRootModule } from './home-root/home-root.module';
-import { BsDropdownModule, AlertModule } from 'ngx-bootstrap';
+import { BsDropdownModule, AlertModule, ModalModule } from 'ngx-bootstrap';
+import { StationBrowsingComponent } from './station/station-browsing/station-browsing.component';
+import { MemberBrowsingComponent } from './member/member-browsing/member-browsing.component';
+import { AttendanceRecordComponent } from './member/attendance-record/attendance-record.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeRootComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    StationBrowsingComponent,
+    MemberBrowsingComponent,
+    AttendanceRecordComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     //bootstrap
-    BsDropdownModule,
+    BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
+    ModalModule.forRoot(),
 
     // app
     HomeRootModule,
